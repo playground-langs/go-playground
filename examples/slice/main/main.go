@@ -1,10 +1,14 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"go-playground/examples/slice"
 	"log"
 )
+
+//go:embed data.txt
+var dataFs embed.FS
 
 func main() {
 	//切片不会自动初始化元素零值,切片的初始值为nil;len,append都把nil看做空切片
@@ -34,7 +38,11 @@ func main() {
 	//切片类似于java ArrayList中指向底层数组的指针
 	s4 = append(s4, 16)
 	fmt.Println(s4)
-	input, err := slice.GetFloats("/Users/techzealot/goProjects/go-playground/examples/slice/main/data.txt")
+	file, err := dataFs.Open("data.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	input, err := slice.GetFloats(file)
 	if err != nil {
 		log.Fatal(err)
 	}
