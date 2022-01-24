@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	l := Liters(10.0)
-	g := Gallon(240.0)
+	l := Liters(10.032456)
+	g := Gallon(240.012345)
 	fmt.Println(l, g)
 	fmt.Println(l + 10)
 	fmt.Println(g + Gallon(30))
@@ -22,6 +22,11 @@ type Liters float64
 //ToGallon 值接收器
 func (l Liters) ToGallon() Gallon {
 	return Gallon(l * 0.264)
+}
+
+//
+func (l Liters) String() string {
+	return fmt.Sprintf("%0.2f L", l)
 }
 
 //Double 若要修改接收器，必须使用 指针接收器
