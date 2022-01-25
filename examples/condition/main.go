@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"strconv"
 	"strings"
@@ -30,4 +31,26 @@ func main() {
 		result = "不及格"
 	}
 	fmt.Println(result)
+}
+
+func ifInit() {
+	if f, err := strconv.ParseFloat("1.234", 64); err != nil {
+		fmt.Println(f)
+	}
+	if f, err := strconv.ParseFloat("23.234", 64); err != nil {
+		fmt.Println(f)
+	}
+}
+
+func switchTest() {
+	switch i := rand.Intn(10); i {
+	case 0:
+		fmt.Println(i)
+	case 1:
+		fmt.Println(i)
+	case 2:
+		fmt.Println(i)
+	default:
+		fmt.Println(i)
+	}
 }
